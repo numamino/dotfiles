@@ -1,0 +1,30 @@
+[core]
+	excludesfile = /Users/numamino/.gitignore_global
+	autocrlf = input
+	ignorecase = false
+[user]
+	name = minoru.onuma
+	email = konica.minolta3140@gmail.com
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[pager]
+	log = diff-highlight | less
+	show = diff-highlight | less
+	diff = diff-highlight | less
+[diff]
+	compactionHeuristic = true
+[commit]
+	template = /Users/numamino/.stCommitMsg
+[alias]
+	alias = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	st = status
+	ad = add .
+	co = commit --author=\"minoru.onuma<konica.minolta3140@gmail.com>\" -m
+	ch = checkout
+	fe = fetch
+	br = branch
+	pu = pull
+	puo = push origin
