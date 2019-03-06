@@ -11,17 +11,29 @@ alias hfoff="defaults write com.apple.finder AppleShowAllFiles false|killall Fin
 export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight
 
 # php
-export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
-
-# postgresql
-export PGDATA=/usr/local/var/postgres
+#export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
 
 # java
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home
+
+# docker
+alias rm_docker_images='docker images -qf dangling=true | xargs docker rmi'
+alias rm_docker_containers='docker ps -aqf status=exited | xargs docker rm -v' # rm with volumes
+alias rm_docker_volumes='docker volume ls -qf dangling=true | xargs docker volume rm'
 
 # env
 export LANG=ja_JP.UTF-8
 export PATH=$PATH:/usr/local/sbin
+
+# nvm
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
+# flutter
+export PATH=~/Develop/Projects/flutter/bin:$PATH
+
+# android
+export ANDROID_HOME=/Library/Android/sdk
 
 # color
 autoload -Uz colors
@@ -141,3 +153,9 @@ esac
 
 # THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
 [[ -s "/Users/numamino/.gvm/bin/gvm-init.sh" ]] && source "/Users/numamino/.gvm/bin/gvm-init.sh"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/numamino/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/numamino/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/numamino/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/numamino/google-cloud-sdk/completion.zsh.inc'; fi
