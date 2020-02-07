@@ -11,10 +11,14 @@ alias hfoff="defaults write com.apple.finder AppleShowAllFiles false|killall Fin
 export PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight
 
 # php
-#export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
+export PATH="/usr/local/opt/php@7.3/bin:$PATH"
 
 # java
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home
+
+# go
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin
 
 # docker
 alias rm_docker_images='docker images -qf dangling=true | xargs docker rmi'
@@ -29,11 +33,20 @@ export PATH=$PATH:/usr/local/sbin
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
 
+# rbenv
+[[ -d ~/.rbenv  ]] && export PATH=${HOME}/.rbenv/bin:${PATH} && eval "$(rbenv init -)"
+
 # flutter
 export PATH=~/Develop/Projects/flutter/bin:$PATH
 
 # android
 export ANDROID_HOME=/Library/Android/sdk
+
+# aws
+export PATH=$PATH:~/.aws/bin
+
+# autosuggestion
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # color
 autoload -Uz colors
